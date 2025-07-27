@@ -54,7 +54,8 @@ p {
 }
 
 /* HEADER & FOOTER */
-header, footer {
+header,
+footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,7 +70,9 @@ footer i {
 header h1,
 footer h1 {
   background: linear-gradient(to right, #f2ece2, #6b31ce);
+  -webkit-background-clip: text;
   background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
 }
 footer {
@@ -225,7 +228,8 @@ aside {
 }
 
 /* MODEL / POPUP */
-.model, .popup {
+.model,
+.popup {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -262,7 +266,11 @@ aside {
 .point .score {
   width: clamp(100px, 25vw, 160px);
   height: clamp(100px, 25vw, 160px);
-  background: linear-gradient(to bottom, rgba(61, 39, 171, 0.6), rgba(0, 0, 200, 0.11));
+  background: linear-gradient(
+    to bottom,
+    rgba(61, 39, 171, 0.6),
+    rgba(0, 0, 200, 0.11)
+  );
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -293,7 +301,8 @@ button:disabled {
 }
 
 /* UTILITIES */
-.showModel, .show-popup {
+.showModel,
+.show-popup {
   display: block;
   animation: fadeIn 0.5s ease-in-out;
 }
@@ -308,18 +317,31 @@ button:disabled {
   position: absolute;
   inset: 0;
 }
+.fa-star {
+  color: orange;
+}
 
 /* ANIMATIONS */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes slideRight {
-  from { transform: translateX(100%); }
-  to { transform: translateX(0); }
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* SCROLLBAR */
