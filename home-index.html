@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GuesFlag</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/app.css" />
+  </head>
+  <body class="stack">
+    <header class="stack">
+      <h1>G<span>F</span></h1>
+      <!-- <h1 id="h-s">seconds:</h1> -->
+      <i class="fa-solid fa-gear" id="setting"></i>
+    </header>
+
+    <main class="stack">
+      <!-- <div class="container"> -->
+        <div class="begin" id="begin">
+          <h1>Play A Fun Game</h1>
+          <p>Try to gues a flag 🏳️ and test your knowledge!</p>
+          <p>Do you want to play︖</p>
+          <p>CLick the top setting icon</p>
+        </div>
+        
+        <div class="containerBox" id="container">
+          <div class="info">
+            <h1>Q: <span class="track-q"></span>/<span id="totalQuestion"></span></h1>
+            <h1><span id="time"></span></h1>
+          </div>
+          <h1>Q<span class="track-q">1</span>: Wich country has this flag ? </h1>
+          <div class="flag">
+            <img src="../somalia-flag.png" alt="" />
+          </div>
+          <div class="answers-box" id="answers"></div>
+        </div>
+
+        <div class="spinner" id="spinner" style="display: none;"></div>
+      <!-- </div> -->
+
+      <!-- //medel  -->
+      <div class="model" id="model">
+        <div class="model-header">
+          <h2>BE READY</h2>
+          <i class="fa-solid fa-xmark" id="hide-model"></i>
+        </div>
+        <div class="model-body">
+          <h2>
+            You choose <span id="displaySec-per-q">5s</span> to answer per
+            question
+          </h2>
+          <h2>
+            The total time you choose is
+            <span id="display-total-time">150s</span>
+          </h2>
+          <h2>
+            you will ask <span id="display-total-q">30</span> Questions Good
+            Luck!!
+          </h2>
+          <button id="start">Start</button>
+        </div>
+      </div>
+
+      <!-- popup -->
+       <div class="popup" id="popup">
+        <div class="point">
+            <h1> Your Score </h1>
+            <div class="score"><h1 id="total-answer"> 76/100 </div>
+            <h2 id="message">Great</h2>
+            <p>You scored <span id="average">76%</span></p>
+            <p id="p-star">You Get <Span id="star"></Span></p>
+            <div class="buttons">
+              <button id="play_again">Play again</button>
+              <button id="quite">Quite</button>
+            </div>
+        </div>
+       </div>
+    </main>
+
+    <aside class="stack">
+      <div class="setting">
+        <h2>Settings</h2>
+        <i class="fa-solid fa-xmark" id="hide-setting"></i>
+      </div>
+      <div class="manageTime">
+        <p>Select time that you can answer 1 flag in seconds</p>
+        <input type="number" min="3" max="15" id="time-per-q"/>
+        <p>Select the completion time in seconds</p>
+        <input type="number"  min="20" max="150"  id="total-time" />
+        <p id="error">make it right pro</p>
+        <button id="ready">OK</button>
+      </div>
+      <!-- <div class="theme">
+        <h2>Change Theme</h2>
+        <input type="radio" value="default" name="theme">  Default <br>
+        <input type="radio" value="default" name="theme">  Dark <br >
+        <input type="radio" value="default" name="theme">  Light <br />
+        <input type="radio" value="default" name="theme">  Custom <br/>
+        <div class="customColor">
+          <h3>Choose Color </h3>
+          <input type="color">
+        </div>
+      </div> -->
+    </aside>
+
+    <footer>
+      <h1>Guessing Flag app</h1>
+      <p>made by omm 2025</p>
+
+    </footer class="stack">
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>

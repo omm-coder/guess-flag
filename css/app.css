@@ -2,7 +2,7 @@
 
 :root {
   --primary-bg: hsl(262, 78%, 16%);
-  --secondary-bg: hsl(262, 78%, 10%);
+  --secondary-bg: hsl(262, 73%, 13%);
   --text-light: #f2ece2;
   --text-muted: #eadddd;
   --accent: #6b31ce;
@@ -25,7 +25,6 @@ body {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
 }
 
 /* TYPOGRAPHY */
@@ -62,10 +61,14 @@ footer {
   padding: 10px clamp(10px, 5vw, 130px);
   background-color: #040842;
 }
-header i,
-footer i {
+ i {
   font-size: 2rem;
   color: var(--text-light);
+  transition: scale 2s ease-in-out;
+  margin-bottom: 10px;
+}
+i:hover {
+  transform: scale(1.05);
 }
 header h1,
 footer h1 {
@@ -106,7 +109,7 @@ main {
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
   padding: 10px;
   margin: auto;
 }
@@ -125,8 +128,8 @@ main {
 /* FLAG SECTION */
 .flag {
   width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  max-width: 300px;
+  margin: 10px 0;
 }
 .flag img {
   width: 100%;
@@ -248,9 +251,11 @@ aside {
   justify-content: space-between;
   align-items: center;
 }
+ 
 .model-body h2 {
   font-weight: 300;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  margin-bottom: 5px;
 }
 .model-body h2 span {
   font-weight: 500;

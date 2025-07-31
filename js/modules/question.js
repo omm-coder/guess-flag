@@ -52,14 +52,16 @@ function PrintQuestion() {
       // });
 
       while (answerBox.firstChild) answerBox.removeChild(answerBox.firstChild);
+      const ul = document.createElement('ul');
       for (let i = 0; i < randomCountries.length; i++) {
         const character = String.fromCharCode(alphabet);
         const li = document.createElement("li");
         li.textContent = `${character}) ${randomCountries[i].name.common}`;
 
-        answerBox.appendChild(li);
+        ul.appendChild(li);
         alphabet++;
       }
+      answerBox.appendChild(ul)
 
       setIsClickable(true);
     })

@@ -69,9 +69,12 @@ const hasThemValue = () =>
 
 function callModel(btn) {
   let isOk = hasThemValue();
+  alert(isOk);
   if (isOk) {
-    model.classList.add("showModel");
+    
+    model.classList.add("show-model");
     aside.classList.remove("showAside");
+    beginDiv.classList.add("hideBegin");
     allSpan.forEach(writeOnSpan);
     btn.disabled = true;
   } else {
@@ -141,9 +144,8 @@ function clickButton(button) {
       resetCount();
       counter(); // start question count
 
-      beginDiv.classList.add("hideBegin");
       containerBox.classList.add("showContainer");
-      model.classList.remove("showModel");
+      model.classList.remove("show-model");
 
       PrintQuestion();
       handleAnswer();
@@ -154,12 +156,11 @@ function clickButton(button) {
       btn.disabled = false;
       clearInputs();
     } else if (button.id === "play_again") {
-
       resetScore();
       resetCount();
       counter();
 
-      popup.classList.remove('show-popup')
+      popup.classList.remove("show-popup");
       containerBox.classList.add("showContainer");
 
       PrintQuestion();
