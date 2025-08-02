@@ -9,6 +9,7 @@ let allInputs = document.querySelectorAll("input");
 let allSpan = document.querySelectorAll("span");
 
 const aside = document.querySelector("aside");
+const cont_parent = document.querySelector("#cont-parent");
 const model = document.querySelector("#model");
 const popup = document.querySelector("#popup");
 const beginDiv = document.querySelector("#begin");
@@ -69,9 +70,7 @@ const hasThemValue = () =>
 
 function callModel(btn) {
   let isOk = hasThemValue();
-  alert(isOk);
   if (isOk) {
-    
     model.classList.add("show-model");
     aside.classList.remove("showAside");
     beginDiv.classList.add("hideBegin");
@@ -144,6 +143,7 @@ function clickButton(button) {
       resetCount();
       counter(); // start question count
 
+      cont_parent.classList.add('start')
       containerBox.classList.add("showContainer");
       model.classList.remove("show-model");
 
@@ -161,6 +161,7 @@ function clickButton(button) {
       counter();
 
       popup.classList.remove("show-popup");
+      cont_parent.classList.add('start')
       containerBox.classList.add("showContainer");
 
       PrintQuestion();
