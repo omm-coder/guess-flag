@@ -65,5 +65,6 @@ function startGlobalTimer(totalTime, id) {
 function StopQuestionTimer() {
   clearTimeout(questionTimer);
 }
+const stopGlobalTimer = () =>  clearInterval(globalTimer);
 
-export { startQuestionTimer, startGlobalTimer, StopQuestionTimer };
+export { startQuestionTimer, startGlobalTimer, StopQuestionTimer, stopGlobalTimer};

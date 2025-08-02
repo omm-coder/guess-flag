@@ -1,6 +1,6 @@
 import { PrintQuestion, handleAnswer } from "./question.js";
 import { resetScore } from "./state.js";
-import { startGlobalTimer } from "./timer.js";
+import { startGlobalTimer, stopGlobalTimer } from "./timer.js";
 
 // grab all ellements
 let allIcons = document.querySelectorAll("i");
@@ -155,6 +155,7 @@ function clickButton(button) {
       const btn = document.querySelector("#ready");
       btn.disabled = false;
       clearInputs();
+      stopGlobalTimer();
     } else if (button.id === "play_again") {
       resetScore();
       resetCount();
