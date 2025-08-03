@@ -24,9 +24,7 @@
     </header>
 
     <main>
-
-      <div class="container " id="cont-parent">
-        
+      <div class="container" id="cont-parent">
         <div class="begin" id="begin">
           <h1>Play A Fun Game</h1>
           <p>Try to gues a flag 🏳️ and test your knowledge!</p>
@@ -37,7 +35,9 @@
         <div class="containerBox" id="container">
           <div class="info">
             <h1>
-              Q: <span class="track-q"></span>/<span id="totalQuestion">30</span>
+              Q: <span class="track-q"></span>/<span id="totalQuestion"
+                >30</span
+              >
             </h1>
             <h1><span id="time">00:30</span></h1>
           </div>
@@ -50,12 +50,14 @@
           <div class="answers-box" id="answers"></div>
         </div>
 
-        <div class="spinner" id="spinner" style="display: none;"></div>
+        <div class="spinner" id="spinner" style="display: none"></div>
 
         <div class="model stack" id="model">
           <div class="model-header">
             <h2>BE READY</h2>
-            <div class="icons"><i class="fa-solid fa-xmark" id="hide-model"></i></div>
+            <div class="icons">
+              <i class="fa-solid fa-xmark" id="hide-model"></i>
+            </div>
           </div>
           <div class="model-body">
             <h2>
@@ -75,35 +77,169 @@
         </div>
 
         <div class="popup" id="popup">
-            <div class="point">
-                <h1> Your Score </h1>
-                <div class="score"><h1 id="total-answer"> 76/100 </div>
-                <h2 id="message">Great</h2>
-                <p>You scored <span id="average">76%</span></p>
-                <p id="p-star">You Get <Span id="star"></Span></p>
-                <div class="buttons">
-                    <button class="btn" id="play_again">Play again</button>
-                    <button class="btn" id="quite">Quite</button>
-                </div>
+          <div class="point">
+            <h1>Your Score</h1>
+            <div class="score"><h1 id="total-answer">76/100</h1></div>
+            <h2 id="message">Great</h2>
+            <p>You scored <span id="average">76%</span></p>
+            <p id="p-star">You Get <span id="star"></span></p>
+            <div class="buttons">
+              <button class="btn" id="play_again">Play again</button>
+              <button class="btn" id="quite">Quite</button>
             </div>
+          </div>
         </div>
-        
-       </div> 
+      </div>
     </main>
 
     <aside>
       <div class="container stack">
         <div class="setting">
           <h2>Settings</h2>
-          <div class="icons"><i class="fa-solid fa-xmark" id="hide-setting"></i></div>
+          <div class="icons">
+            <i class="fa-solid fa-xmark" id="hide-setting"></i>
+          </div>
         </div>
-        <div class="manageTime">
-          <p>Select time that you can answer 1 flag in seconds</p>
-          <input type="number" min="3" max="15" id="time-per-q"/>
-          <p>Select the completion time in seconds</p>
-          <input type="number"  min="20" max="150"  id="total-time" />
-          <p id="error">make it right pro</p>
-          <button id="ready" class="btn">OK</button>
+        <div class="manner">
+          <div class="choose-manner">
+            <h1 id="play-normal">Play Normal</h1>
+            <h1 id="play-with-time">Play With Time</h1>
+          </div>
+          <div class="manner-container">
+            <div class="play-normal" id="con-play-normal">
+              <div class="options stack">
+                <div class="continents">
+                  <h1>Choose Continent</h1>
+                  <form>
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id="all"
+                        name="continent"
+                        value="All"
+                      />
+                      <label for="all">All</label>
+                    </div>
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id="africa"
+                        name="continent"
+                        value="Africa"
+                      />
+                      <label for="africa">Africa</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id="antarctica"
+                        name="continent"
+                        value="Antarctica"
+                      />
+                      <label for="antarctica">Antarctica</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id=" asia"
+                        name="continent"
+                        value=" Asia"
+                      />
+                      <label for=" asia"> Asia</label>
+                    </div>
+
+                    <div class="form-controll">
+                      <input
+                        type="radio"
+                        id="australia"
+                        name="continent"
+                        value="Australia"
+                      />
+                      <label for="australia">Australia</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id="europe"
+                        name="continent"
+                        value="Europe"
+                      />
+                      <label for="europe">Europe</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id="north-america"
+                        name="continent"
+                        value="North America"
+                      />
+                      <label for="north-america">North America</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input
+                        type="radio"
+                        id="south-america"
+                        name="continent"
+                        value="South America"
+                      />
+                      <label for="south-america">South America</label>
+                    </div>
+                  </form>
+                </div>
+                <div class="number-flags">
+                  <h1>Number of flags</h1>
+                  <form>
+                    <div class="form-control">
+                      <input type="radio" id="10" name="flags" value="10" />
+                      <label for="10">10</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input type="radio" id="30" name="flags" value="30" />
+                      <label for="30">30</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input type="radio" id="70" name="flags" value="70" />
+                      <label for="70">70</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input type="radio" id="110" name="flags" value="110" />
+                      <label for="110">110</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input type="radio" id="160" name="flags" value="160" />
+                      <label for="160">160</label>
+                    </div>
+
+                    <div class="form-control">
+                      <input type="radio" id="200" name="flags" value="200" />
+                      <label for="200">200</label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <div class="play-with-time" id="con-play-with-time">
+              <div class="manageTime">
+                <p>Select time that you can answer 1 flag in seconds</p>
+                <input type="number" min="3" max="15" id="time-per-q" />
+                <p>Select the completion time in seconds</p>
+                <input type="number" min="20" max="150" id="total-time" />
+                <!-- <button id="ready" class="btn">OK</button> -->
+              </div>
+            </div>
+          </div>
+          <div class="error-container">
+            <h2 id="error">Erorr</h2>
+          </div>
         </div>
       </div>
     </aside>

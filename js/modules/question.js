@@ -2,18 +2,25 @@ import { check_answer } from "./answer.js";
 import { getIsClickable, setIsClickable } from "./state.js";
 import { startQuestionTimer, StopQuestionTimer } from "./timer.js";
 
-const url = "https://restcountries.com/v3.1/all?fields=name,capital,flags";
 let img = document.querySelector("img");
 let answerBox = document.querySelector(".answers-box");
 let containerBox = document.querySelector("#container");
 let spinDiv = document.querySelector("#spinner");
 let countryToGuess;
+let continent;
+
+
+const getContinent = value => continent = value;
+
+const url1 = "https://restcountries.com/v3.1/all?fields=name,capital,flags";
+const url2 = `https://restcountries.com/v3.1/region/${continent}?fields=name,capital,flags`;
+
 
 function PrintQuestion() {
   spinDiv.style.display = "block";
   containerBox.style.opacity = "0";
 
-  fetch(url)
+  fetch(url1)
     .then((response) => {
       if (!response.ok) throw new Error("Fetch Failed");
       return response;
@@ -64,6 +71,7 @@ function PrintQuestion() {
       answerBox.appendChild(ul)
 
       setIsClickable(true);
+      startQuestionTimer();
     })
     .catch((err) => console.log(err))
     .finally(() => {
@@ -71,7 +79,6 @@ function PrintQuestion() {
       containerBox.style.opacity = "1";
     });
 
-  startQuestionTimer();
 }
 
 function handleClick(e) {
@@ -87,4 +94,4 @@ function handleAnswer() {
   answerBox.addEventListener("click", handleClick); // add fresh listener
 }
 
-export { PrintQuestion, handleAnswer };
+export { PrintQuestion, handleAnswer, getContinent};

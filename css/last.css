@@ -312,38 +312,107 @@ aside {
   visibility: hidden;
 }
 
-aside .container .setting {
+.setting {
   display: flex;
   justify-content: space-between;
   padding-block: 0.5rem;
   border-bottom: 2px solid var(--text-muted);
 }
-aside .container .setting .icons i:hover {
+.setting .icons i:hover {
   transform: rotate(0deg);
   transform: scale(1.03);
 }
 
-aside .container .manageTime > * + * {
-  margin-block: 0.5em;
+
+.manner > * + *{
+  margin-block: .8em;
 }
-aside .container .manageTime p {
+
+.choose-manner {
+  /* background-color: red; */
+  display: flex;
+  justify-content: space-between;
+}
+.choose-manner h1 {
+  font-size: 1.2rem;
+  /* position: relative; */
+}
+/* .choose-manner h1::after {
+  content: "";
+  width: 0;
+  height: 4px;
+  background-color: #ccc;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+} */
+/* .choose-manner h1:hover::after {
+  width: 95%;
+  opacity: 1;
+} */
+
+.options h1 {
+  font-weight: 300;
+}
+.continents form,
+.number-flags form {
+  margin-top: 10px;
+}
+.continents form > * + * {
+  margin-block: 0.3em;
+}
+
+.number-flags form {
+  display: flex;
+  justify-content: space-between;
+}
+form label {
+  font-weight: 400;
+  font-size: 1em;
+  color: var(--text-muted);
+}
+
+.play-normal {
+  display: none;
+}
+.play-with-time {
+  display: none;
+}
+
+.manageTime > * + * {
+  margin-block: 0.3em;
+}
+.manageTime p {
   font-weight: 300;
   font-size: 22px;
   color: var(--text-muted);
   text-wrap: pretty;
 }
-aside .container .manageTime p#error {
-  color: var(--error-color);
-  visibility: hidden;
-}
-aside .container .manageTime input {
+
+.manageTime input {
+  display: block;
   border: none;
   outline: none;
   padding: 10px 16px;
   border-radius: 8px;
   font-size: 20px;
 }
+.manageTime button {
+  margin-top: 20px;
+}
 
+.error-container {
+  padding: 0.5em;
+}
+.error-container h2 {
+  font-size: 20px;
+  font-weight: 500;
+  text-wrap: pretty;
+  color: var(--error-color);
+  visibility: hidden;
+}
 /* //loader  */
 .spinner {
   border: 5px solid rgba(255, 255, 255, 0.2);
@@ -377,4 +446,11 @@ aside .container .manageTime input {
 }
 .container .show-popup {
   display: grid;
+}
+
+.showCase-setting {
+  display: block;
+}
+.selected {
+  border-bottom: 5px solid #ccc;
 }

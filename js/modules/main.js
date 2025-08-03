@@ -14,6 +14,10 @@ const model = document.querySelector("#model");
 const popup = document.querySelector("#popup");
 const beginDiv = document.querySelector("#begin");
 const containerBox = document.querySelector("#container");
+const play_normal = document.querySelector("#play-normal");
+const play_with_time = document.querySelector("#play-with-time");
+const con_play_normal = document.querySelector("#con-play-normal");
+const con_play_with_time = document.querySelector("#con-play-with-time");
 const errorPara = document.querySelector("#error");
 
 //global variable
@@ -59,7 +63,7 @@ function writeOnSpan(span) {
       span.textContent = getTotalQuestion();
       break;
     case "time":
-      setTimeout(() => startGlobalTimer(totalSeconds, "time"), 2000);
+      startGlobalTimer(totalSeconds, "time");
       break;
     default:
       break;
@@ -143,7 +147,7 @@ function clickButton(button) {
       resetCount();
       counter(); // start question count
 
-      cont_parent.classList.add('start')
+      cont_parent.classList.add("start");
       containerBox.classList.add("showContainer");
       model.classList.remove("show-model");
 
@@ -162,7 +166,7 @@ function clickButton(button) {
       counter();
 
       popup.classList.remove("show-popup");
-      cont_parent.classList.add('start')
+      cont_parent.classList.add("start");
       containerBox.classList.add("showContainer");
 
       PrintQuestion();
@@ -177,6 +181,21 @@ function start() {
   allButons.forEach(clickButton);
   allInputs.forEach(onChangeInput);
 }
+
+play_normal.addEventListener("click", () => {
+  con_play_with_time.classList.remove("showCase-setting");
+  con_play_normal.classList.add("showCase-setting");
+
+  play_normal.classList.add("selected");
+  play_with_time.classList.remove("selected");
+});
+play_with_time.addEventListener("click", () => {
+  con_play_normal.classList.remove("showCase-setting");
+  con_play_with_time.classList.add("showCase-setting");
+
+  play_with_time.classList.add("selected");
+  play_normal.classList.remove("selected");
+});
 
 export {
   totalSeconds,
