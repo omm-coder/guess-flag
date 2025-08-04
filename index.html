@@ -50,6 +50,31 @@
           <div class="answers-box" id="answers"></div>
         </div>
 
+        <div class="normal containerBox" id="normal-container">
+          <div class="info">
+            <h3>Back</h3>
+            <h2 id="score-in-normal">score:10</h2>
+            <h2 id=""></h2>
+            <h1>
+              Q:<span class="track-q"></span>/<span id="totalQuestion">30</span>
+            </h1>
+          </div>
+          <h1 id="h-question">
+            Q<span class="track-q">1</span>: Wich country has this flag ?
+          </h1>
+          <div class="flag">
+            <img src="../somalia-flag.png" alt="" />
+          </div>
+          <div class="answers-box" id="answers">
+            <ul>
+              <li>noraway</li>
+              <li>noraway</li>
+              <li>noraway</li>
+              <li>noraway</li>
+            </ul>
+          </div>
+        </div>
+
         <div class="spinner" id="spinner" style="display: none"></div>
 
         <div class="model stack" id="model">
@@ -107,22 +132,22 @@
           </div>
           <div class="manner-container">
             <div class="play-normal" id="con-play-normal">
-              <div class="options stack">
+              <div class="options">
                 <div class="continents">
                   <h1>Choose Continent</h1>
                   <form>
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="all"
                         name="continent"
-                        value="All"
+                        value="all"
                       />
                       <label for="all">All</label>
                     </div>
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="africa"
                         name="continent"
                         value="Africa"
@@ -132,37 +157,37 @@
 
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="antarctica"
                         name="continent"
-                        value="Antarctica"
+                        value="antarctic"
                       />
                       <label for="antarctica">Antarctica</label>
                     </div>
 
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id=" asia"
                         name="continent"
-                        value=" Asia"
+                        value="Asia"
                       />
-                      <label for=" asia"> Asia</label>
+                      <label for="asia"> Asia</label>
                     </div>
 
                     <div class="form-controll">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="australia"
                         name="continent"
-                        value="Australia"
+                        value="oceania"
                       />
                       <label for="australia">Australia</label>
                     </div>
 
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="europe"
                         name="continent"
                         value="Europe"
@@ -172,7 +197,7 @@
 
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="north-america"
                         name="continent"
                         value="North America"
@@ -182,7 +207,7 @@
 
                     <div class="form-control">
                       <input
-                        type="radio"
+                        type="checkbox"
                         id="south-america"
                         name="continent"
                         value="South America"
@@ -226,6 +251,7 @@
                   </form>
                 </div>
               </div>
+              <button id="normal" class="btn">OK</button>
             </div>
             <div class="play-with-time" id="con-play-with-time">
               <div class="manageTime">
@@ -233,7 +259,7 @@
                 <input type="number" min="3" max="15" id="time-per-q" />
                 <p>Select the completion time in seconds</p>
                 <input type="number" min="20" max="150" id="total-time" />
-                <!-- <button id="ready" class="btn">OK</button> -->
+                <button id="ready" class="btn">OK</button>
               </div>
             </div>
           </div>

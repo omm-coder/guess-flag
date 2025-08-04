@@ -1,3 +1,9 @@
+import {
+  clearValues,
+  getCountries_of_continent,
+  getNumberFlags,
+  getSelectedContinent,
+} from "./case.js";
 import { PrintQuestion, handleAnswer } from "./question.js";
 import { resetScore } from "./state.js";
 import { startGlobalTimer, stopGlobalTimer } from "./timer.js";
@@ -69,21 +75,26 @@ function writeOnSpan(span) {
       break;
   }
 }
+const displayError = () => {
+  errorPara.style.visibility = "visible";
+  setTimeout(() => (errorPara.style.visibility = "hidden"), 3000);
+};
+const addRemoveHelper = (element) => {
+  if(element) model.classList.add("show-model");
+  aside.classList.remove("showAside");
+  beginDiv.classList.add("hideBegin");
+};
 const hasThemValue = () =>
   seconds_per_Question && totalSeconds ? true : false;
 
-function callModel(btn) {
+function callModel() {
   let isOk = hasThemValue();
   if (isOk) {
-    model.classList.add("show-model");
-    aside.classList.remove("showAside");
-    beginDiv.classList.add("hideBegin");
+    addRemoveHelper(model);
     allSpan.forEach(writeOnSpan);
-    btn.disabled = true;
   } else {
     errorPara.textContent = message ? message : "Please configure time";
-    errorPara.style.visibility = "visible";
-    setTimeout(() => (errorPara.style.visibility = "hidden"), 3000);
+    displayError();
   }
 }
 function clearInputs() {
@@ -104,6 +115,17 @@ function validateInput(value, id) {
     }
     return value;
   }
+}
+
+async function checkCountries() {
+  const isShorter = await getCountries_of_continent();
+  if (!isShorter) {
+    errorPara.textContent = "Too Short Countries.";
+    displayError();
+    clearValues();
+    return;
+  }
+  addRemoveHelper()
 }
 
 function onChangeInput(input) {
@@ -141,8 +163,18 @@ function clickIcon(icon) {
 
 function clickButton(button) {
   button.addEventListener("click", () => {
-    if (button.id === "ready") callModel(button);
-    else if (button.id === "start") {
+    if (button.id === "ready") {
+      callModel(button);
+    } else if (button.id === "normal") {
+      const value = getSelectedContinent();
+      const numberflags = getNumberFlags();
+      console.log("Selected continents:", value);
+      console.log("Selected Number countries:", numberflags);
+      checkCountries();
+      const normal_container = document.querySelector('#normal-container');
+      normal_container.style.display = "flex"
+
+    } else if (button.id === "start") {
       resetScore();
       resetCount();
       counter(); // start question count
