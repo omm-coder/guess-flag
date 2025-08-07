@@ -1,9 +1,11 @@
 import { normal_check_answer } from "./answer.js";
 import { printAnswers, updateRandomCountries } from "./question.js";
+import { getScore } from "./state.js";
 
 const checkBox_continents = document.getElementsByName("continent");
 const radio_flags_number = document.getElementsByName("flags");
 const answersBox = document.querySelector("#normal-answers");
+const scoreElement = document.querySelector("#score-in-normal");
 
 let numberFlags;
 let selectedConntinents = [];
@@ -80,6 +82,7 @@ function nextQuestion() {
 
   let indexCountryToGuess = Math.floor(Math.random() * randomCountries.length);
   countryToGuess = randomCountries[indexCountryToGuess];
+  scoreElement.textContent = `score:${getScore()}`;
 
   printAnswers("normal-img", "normal-answers", countryToGuess, randomCountries);
 }

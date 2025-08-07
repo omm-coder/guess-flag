@@ -5,10 +5,12 @@ import { getScore } from "./state.js";
 
 function endGame() {
   const containerBox = document.querySelector("#container");
-  const cont_parent = document.querySelector("#cont-parent")
+  const cont_parent = document.querySelector("#cont-parent");
+  const normal_container = document.querySelector("#normal-container");
   setTimeout(() => {
     showPopUp(getScore(), getTotalQuestion());
     containerBox.classList.remove("showContainer");
+    normal_container.classList.remove("showContainer")
     cont_parent.classList.remove("start")
   }, 1000);
 }

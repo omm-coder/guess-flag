@@ -1,10 +1,8 @@
 import { nextQuestion } from "./case.js";
 import { callPrintQuestion, endGame } from "./helper.js";
 import { counter } from "./main.js";
-import { setIsClickable, countScore } from "./state.js";
+import { setIsClickable, countScore, getScore } from "./state.js";
 
-const scoreElement = document.querySelector("#score-in-normal");
-let normal_score = 0;
 
 function check_answer(el, country) {
   let text = el.textContent.split(" ").slice(1);
@@ -35,10 +33,9 @@ function normal_check_answer(el, country) {
   setTimeout(() => {
     el.classList.remove(cssClass);
     if (isRight) {
-      normal_score += 1;
-      scoreElement.textContent = `score:${normal_score}`;
+      countScore();
     }
-    counter() ? nextQuestion() : alert("Finhsed");
+    counter() ? nextQuestion() : endGame();
   }, 1000);
 }
 

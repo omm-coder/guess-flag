@@ -32,6 +32,7 @@ const errorPara = document.querySelector("#error");
 let seconds_per_Question;
 let totalSeconds;
 let message;
+let isWithTime = false;
 
 // allFunctions
 function getTotalQuestion() {
@@ -40,7 +41,6 @@ function getTotalQuestion() {
     totalSeconds && seconds_per_Question
       ? Math.floor(totalSeconds / seconds_per_Question)
       : numberFlags;
-
   return totalQuestion;
 }
 
@@ -131,12 +131,12 @@ async function checkCountries() {
   if (message) {
     errorPara.textContent = message;
     displayError();
-    clearValues();
+    // clearValues();
     return;
   }
   addRemoveHelper();
   cont_parent.classList.add("start");
-  normal_container.style.display = "flex";
+  normal_container.classList.add("showContainer");
 
   counter();
   nextQuestion();
@@ -205,6 +205,7 @@ function clickButton(button) {
       const btn = document.querySelector("#ready");
       btn.disabled = false;
       clearInputs();
+      clearValues();
       stopGlobalTimer();
       location.reload();
     } else if (button.id === "play_again") {
@@ -214,11 +215,21 @@ function clickButton(button) {
 
       popup.classList.remove("show-popup");
       cont_parent.classList.add("start");
-      containerBox.classList.add("showContainer");
+      if (isWithTime) {
+        containerBox.classList.add("showContainer");
 
-      PrintQuestion();
-      handleAnswer();
-      startGlobalTimer(totalSeconds, "time");
+        PrintQuestion();
+        handleAnswer();
+        startGlobalTimer(totalSeconds, "time");
+      }
+      else {
+        normal_container.classList.add("showContainer");
+
+        nextQuestion();
+        handleAnswerClick();
+      }
+
+      
     }
   });
 }
@@ -230,6 +241,7 @@ function start() {
 }
 
 play_normal.addEventListener("click", () => {
+  isWithTime = false;
   con_play_with_time.classList.remove("showCase-setting");
   con_play_normal.classList.add("showCase-setting");
 
@@ -237,6 +249,7 @@ play_normal.addEventListener("click", () => {
   play_with_time.classList.remove("selected");
 });
 play_with_time.addEventListener("click", () => {
+  isWithTime = true;
   con_play_normal.classList.remove("showCase-setting");
   con_play_with_time.classList.add("showCase-setting");
 

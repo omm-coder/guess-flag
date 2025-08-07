@@ -209,6 +209,10 @@ main .container {
   margin-block: 0.5em;
   align-items: center;
 }
+
+.normal .info  span{
+  font-size: clamp(1.5rem, 3vw, 4rem);
+}
 .normal .info button{
   padding: clamp(5px, 1vw, 12px) clamp(12px, 2vw, 25px);
   background-color: #5b19ce;
