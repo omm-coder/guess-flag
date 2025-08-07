@@ -186,8 +186,10 @@ function clickButton(button) {
     } else if (button.id == "back") {
       cont_parent.classList.remove("start");
       beginDiv.classList.remove("hideBegin");
-      normal_container.style.display = "none";
+      normal_container.classList.remove("showContainer");
       clearValues();
+      resetScore();
+      resetCount();
     } else if (button.id === "start") {
       resetScore();
       resetCount();
