@@ -146,13 +146,13 @@ main .container {
   padding-inline: 0.5rem;
 }
 .info h1 {
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text-light);
 }
-.containerBox #h-question {
+#h-question {
   padding-inline: 0.5rem;
-  font-size: clamp(2rem, 3vw, 4rem);
-  text-wrap: balance;
+  font-size: clamp(1.3rem, 3vw, 4rem);
+  text-wrap: pretty;
   color: var(--text-light);
   font-weight: 500;
 }
