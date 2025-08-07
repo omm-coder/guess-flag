@@ -170,6 +170,7 @@ function clickIcon(icon) {
     else if (icon.id === "hide-setting") aside.classList.remove("showAside");
     else if (icon.id === "hide-model") {
       model.classList.remove("show-model");
+      beginDiv.classList.remove('hideBegin')
       const btn = document.querySelector("#ready");
       btn.disabled = false;
     }
