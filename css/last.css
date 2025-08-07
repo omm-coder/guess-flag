@@ -93,8 +93,8 @@ footer .container > * + * {
   margin-block: 0.4em;
 }
 footer .container p {
-  font-size: 24px;
-  font-weight: 200;
+  font-size: 20px;
+  font-weight: 100;
   color: var(--text-muted);
 }
 
