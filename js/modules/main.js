@@ -1,10 +1,11 @@
 import {
+  checkNumberCountries,
   clearValues,
-  getCountries_of_continent,
   getNumberFlags,
-  getSelectedContinent,
+  handleAnswerClick,
+  nextQuestion,
 } from "./case.js";
-import { PrintQuestion, handleAnswer } from "./question.js";
+import { PrintQuestion, fetchAllCountries, handleAnswer } from "./question.js";
 import { resetScore } from "./state.js";
 import { startGlobalTimer, stopGlobalTimer } from "./timer.js";
 
@@ -19,6 +20,7 @@ const cont_parent = document.querySelector("#cont-parent");
 const model = document.querySelector("#model");
 const popup = document.querySelector("#popup");
 const beginDiv = document.querySelector("#begin");
+const normal_container = document.querySelector("#normal-container");
 const containerBox = document.querySelector("#container");
 const play_normal = document.querySelector("#play-normal");
 const play_with_time = document.querySelector("#play-with-time");
@@ -33,8 +35,15 @@ let message;
 
 // allFunctions
 function getTotalQuestion() {
-  return Math.floor(totalSeconds / seconds_per_Question);
+  let numberFlags = parseInt(getNumberFlags());
+  let totalQuestion =
+    totalSeconds && seconds_per_Question
+      ? Math.floor(totalSeconds / seconds_per_Question)
+      : numberFlags;
+
+  return totalQuestion;
 }
+
 function createCountQuestionNumber() {
   let countQuestion = 1;
   return function () {
@@ -80,7 +89,7 @@ const displayError = () => {
   setTimeout(() => (errorPara.style.visibility = "hidden"), 3000);
 };
 const addRemoveHelper = (element) => {
-  if(element) model.classList.add("show-model");
+  if (element) model.classList.add("show-model");
   aside.classList.remove("showAside");
   beginDiv.classList.add("hideBegin");
 };
@@ -118,14 +127,20 @@ function validateInput(value, id) {
 }
 
 async function checkCountries() {
-  const isShorter = await getCountries_of_continent();
-  if (!isShorter) {
-    errorPara.textContent = "Too Short Countries.";
+  const message = await checkNumberCountries();
+  if (message) {
+    errorPara.textContent = message;
     displayError();
     clearValues();
     return;
   }
-  addRemoveHelper()
+  addRemoveHelper();
+  cont_parent.classList.add("start");
+  normal_container.style.display = "flex";
+
+  counter();
+  nextQuestion();
+  handleAnswerClick();
 }
 
 function onChangeInput(input) {
@@ -150,11 +165,11 @@ function onChangeInput(input) {
 }
 
 function clickIcon(icon) {
-  icon.addEventListener("click", () => {
+  icon.addEventListener("click", (e) => {
     if (icon.id === "setting") aside.classList.add("showAside");
     else if (icon.id === "hide-setting") aside.classList.remove("showAside");
     else if (icon.id === "hide-model") {
-      model.classList.remove("showModel");
+      model.classList.remove("show-model");
       const btn = document.querySelector("#ready");
       btn.disabled = false;
     }
@@ -164,16 +179,15 @@ function clickIcon(icon) {
 function clickButton(button) {
   button.addEventListener("click", () => {
     if (button.id === "ready") {
+      fetchAllCountries();
       callModel(button);
     } else if (button.id === "normal") {
-      const value = getSelectedContinent();
-      const numberflags = getNumberFlags();
-      console.log("Selected continents:", value);
-      console.log("Selected Number countries:", numberflags);
       checkCountries();
-      const normal_container = document.querySelector('#normal-container');
-      normal_container.style.display = "flex"
-
+    } else if (button.id == "back") {
+      cont_parent.classList.remove("start");
+      beginDiv.classList.remove("hideBegin");
+      normal_container.style.display = "none";
+      clearValues();
     } else if (button.id === "start") {
       resetScore();
       resetCount();
@@ -192,6 +206,7 @@ function clickButton(button) {
       btn.disabled = false;
       clearInputs();
       stopGlobalTimer();
+      location.reload();
     } else if (button.id === "play_again") {
       resetScore();
       resetCount();

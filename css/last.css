@@ -24,11 +24,11 @@
   --column-width: 1000px;
 }
 .btn {
-  padding: 10px 18px;
+  padding: 10px 22px;
   background-color: var(--accent);
   color: var(--text-light);
   border: none;
-  border-radius: 12px;
+  border-radius: 30px;
   font-size: 22px;
   margin-block-start: 0.8em;
   transition: all 1s ease-in-out;
@@ -103,7 +103,6 @@ main {
   flex: 1;
   display: grid;
   place-items: center;
-  /* background-color: red; */
 }
 main .start {
   justify-self: start;
@@ -137,15 +136,16 @@ main .container {
   display: none;
   flex-direction: column;
 }
-.containerBox > * + * {
+.containerBox > * + *,
+.normal > * + * {
   margin-block: 0.4em;
 }
-.containerBox .info {
+.info {
   display: flex;
   justify-content: space-between;
   padding-inline: 0.5rem;
 }
-.containerBox .info h1 {
+.info h1 {
   font-weight: 500;
   color: var(--text-light);
 }
@@ -156,25 +156,27 @@ main .container {
   color: var(--text-light);
   font-weight: 500;
 }
-.containerBox .flag {
+.flag {
   padding-inline: 0.5rem;
-  max-width: 200px;
+  max-width: 250px;
+  height: 150px;
+  align-self: center;
 }
-.containerBox .flag img {
+.flag img {
   display: block;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-radius: 20px;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 5px;
 }
 
-.containerBox .answers-box ul > * + * {
+.answers-box ul > * + * {
   margin-block: 0.4em;
 }
-.containerBox .answers-box ul {
+.answers-box ul {
   padding-inline: 0.5em;
 }
-.containerBox .answers-box ul li {
+.answers-box ul li {
   list-style: none;
   padding: 10px 18px;
   background-color: rgba(255, 255, 255, 0.1);
@@ -183,35 +185,42 @@ main .container {
   color: var(--text-muted);
   transition: all 0.3s ease-in-out;
 }
-.containerBox .answers-box ul li:hover {
+.answers-box ul li:hover {
   background-color: rgba(255, 255, 255, 0.2);
   transform: scale(1.02);
 }
-.containerBox .answers-box ul li.right {
+.answers-box ul li.right {
   background-color: var(--success-color);
 }
-.containerBox .answers-box ul li.wrong {
+.answers-box ul li.wrong {
   background-color: var(--error-color);
 }
-.containerBox .answers-box ul li.right:hover,
-.containerBox .answers-box ul li.wrong:hover {
+.answers-box ul li.right:hover,
+.answers-box ul li.wrong:hover {
   transform: scale(1.01);
 }
-.containerBox.normal {
+.normal {
+  width: 50%;
   display: none;
+  flex-direction: column;
 }
+
 .normal .info {
-  margin-top: 1em;
-align-items: center;
+  margin-block: 0.5em;
+  align-items: center;
 }
-.normal .info h3 {
-  padding: 8px 16px;
+.normal .info button{
+  padding: clamp(5px, 1vw, 12px) clamp(12px, 2vw, 25px);
   background-color: #5b19ce;
   color: var(--text-light);
-  border-radius: 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 18px;
   display: grid;
   place-items: center;
 }
+
+
 
 /* //model  */
 .container .model {
@@ -353,14 +362,18 @@ aside {
   font-size: 1.2rem;
 }
 .options > * + * {
-  margin-block: 0.2em;
+  margin-block: 0.5em;
 }
 .options h1 {
   font-weight: 300;
 }
+form input[type="checkBox"]{
+  margin-right: 5px;
+  padding: 12px 15px;
+}
 .continents form,
 .number-flags form {
-  margin-top: 10px;
+  font-size: 18px;
 }
 .continents form > * + * {
   margin-block: 0.1em;
@@ -455,4 +468,17 @@ form label {
 }
 .selected {
   border-bottom: 5px solid #ccc;
+}
+
+ 
+@media screen and (max-width: 600px) {
+  main .container {
+    width: 95%;
+  }
+  .normal {
+    width: 100%;
+  }
+  .normal > * + * {
+    margin-block: 1em;
+  } 
 }
